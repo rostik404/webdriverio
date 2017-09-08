@@ -31,4 +31,10 @@ describe('ErrorHandler', () => {
 
         error.stack.should.match(/An unknown server-side error occurred while processing the command/)
     })
+
+    it('should do magic', () => {
+        const error = new ErrorHandler('some-error')
+
+        error.stack.should.match(new RegExp(process.cwd()))
+    })
 })
